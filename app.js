@@ -1,8 +1,7 @@
 import {Client, RichEmbed} from 'discord.js';
 
 const client = new Client();
-// const token = "YOUR_DISCORD_TOKEN_HERE"
-const token = "NDc4NjM5NjA0NzkxMjQ2ODQ4.XNadPQ.2t9aKThBtxu4RfVROsdkAkOjxMY";
+const token = "YOUR_DISCORD_TOKEN_HERE"
 
 client.on('ready', () => {
 	console.log(`Connected with the user ${client.user.tag}!`);
