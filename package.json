@@ -35,6 +35,8 @@
     "@babel/preset-env": "^7.6.3"
   },
   "nodemonConfig": {
-    "watch": ["*"]
+    "watch": [
+      "*"
+    ]
   }
 }
