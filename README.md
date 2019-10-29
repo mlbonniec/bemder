@@ -2,9 +2,9 @@
     <img src="https://i.ibb.co/jkGn40T/Bemder-Activity.png" alt="Bemder version">
 </p>
 
-# Bender - Quoting Discord Bot
+# Bemder - Quoting Discord Bot
 
-Bender is a Discord bot created during a moment of boredom. It is an extremely simple bot. It works under [`Node.js`](https://nodejs.org/) thanks to the module [`discord.js`](https://discord.js.org/). The idea came to me when I was sending message links to my friends: to display the message, we had to click on it. Why not make sure that it is displayed directly by a bot?
+Bemder is a Discord bot created during a moment of boredom. It is an extremely simple bot. It works under [`Node.js`](https://nodejs.org/) thanks to the module [`discord.js`](https://discord.js.org/). The idea came to me when I was sending message links to my friends: to display the message, we had to click on it. Why not make sure that it is displayed directly by a bot?
 
 ---
 <p align="center">
