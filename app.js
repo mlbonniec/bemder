@@ -1,7 +1,7 @@
 import {Client, RichEmbed} from 'discord.js';
 
 const client = new Client();
-const token = "YOUR_DISCORD_TOKEN_HERE"
+const token = "YOUR_DISCORD_TOKEN_HERE";
 
 client.on('ready', () => {
 	console.log(`Connected with the user ${client.user.tag}!`);
@@ -28,6 +28,14 @@ client.on('message', async message => {
                 .setDescription(msg.content)
                 .setColor(msg.author.displayColor)
                 .setFooter(`Quoted by ${message.author.username}#${message.author.discriminator} | From #${msg.channel.name}`);
+
+            if (msg.attachments !== undefined && msg.attachments.size <= 25) {
+                let nbrattachement = 1;
+                msg.attachments.forEach(attachment => {
+                    embed.addField(`Attachement ${nbrattachement}`, attachment.url);
+                    nbrattachement++;
+                });
+            }
             message.channel.send(embed);
         }
     ).catch(() => {return;})
