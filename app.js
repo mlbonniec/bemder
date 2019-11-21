@@ -1,7 +1,7 @@
 import {Client, RichEmbed} from 'discord.js';
 
 const client = new Client();
-const token = "YOUR_DISCORD_TOKEN_HERE";
+const token = "YOUR_CLIENT_TOKEN_HERE";
 
 client.on('ready', () => {
 	console.log(`Connected with the user ${client.user.tag}!`);
@@ -36,15 +36,16 @@ client.on('message', async message => {
                     nbrattachement++;   
                 });
             }
+            
             message.channel.send(embed)
-                .then(message => message.react(':x:'))
-                .catch(err => console.error(err));
+                .then(msg => {
+                    msg.react('❌');
+                    msg.createReactionCollector((reaction, user) => user.id !== client.user.id && user.id === message.author.id && reaction.emoji.name === '❌')
+                        .once('collect', () => message.delete())
+                })
+                .catch(err => console.error(err))
         }
     ).catch(() => {return;})
 });
-
-client.on('messageReactionAdd', async (reaction, user) => {
-    if(reaction.emoji === ':x:' && reaction.message.author === reaction.me) reaction.message.delete();
-})
 
 client.login(token);
