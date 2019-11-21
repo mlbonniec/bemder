@@ -33,12 +33,18 @@ client.on('message', async message => {
                 let nbrattachement = 1;
                 msg.attachments.forEach(attachment => {
                     embed.addField(`Attachement ${nbrattachement}`, attachment.url);
-                    nbrattachement++;
+                    nbrattachement++;   
                 });
             }
-            message.channel.send(embed);
+            message.channel.send(embed)
+                .then(message => message.react(':x:'))
+                .catch(err => console.error(err));
         }
     ).catch(() => {return;})
 });
+
+client.on('messageReactionAdd', async (reaction, user) => {
+    if(reaction.emoji === ':x:' && reaction.message.author === reaction.me) reaction.message.delete();
+})
 
 client.login(token);
