@@ -46,7 +46,6 @@ client.on('message', async (message: Message) => {
 			const member: GuildMember = msg.guild.members.cache.get(msg.author.id);
 			const embed: MessageEmbed = new MessageEmbed()
 				.setAuthor(`${msg.author.username}#${msg.author.discriminator}`, msg.author.avatarURL(), url)
-				.setThumbnail(msg.author.avatarURL())
 				.setTimestamp(new Date())
 				.setDescription(msg.content)
 				.setColor(member?.displayColor || null)
