@@ -1,10 +1,16 @@
 {
   "name": "bemder",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Bemder is a Discord bot that displays messages contained in Discord links.",
-  "main": "app.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "start": "nodemon . --exec babel-node"
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf ./dist",
+    "dev": "tsnd --clear -r dotenv/config src/index.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prod": "NODE_ENV=production node -r dotenv/config .",
+    "start": "npm run build && npm run prod"
   },
   "repository": {
     "type": "git",
@@ -25,18 +31,20 @@
   },
   "homepage": "https://github.com/mlbonniec/bemder#readme",
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
-    "discord.js": "^11.5.1",
-    "nodemon": "^1.19.4"
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/preset-env": "^7.6.3"
-  },
-  "nodemonConfig": {
-    "watch": [
-      "*"
-    ]
+    "@types/node": "^14.14.14",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.16.0",
+    "eslint-config-noftalint": "^1.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-unicorn": "^24.0.0",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
   }
 }
