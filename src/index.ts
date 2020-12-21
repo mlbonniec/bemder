@@ -38,6 +38,8 @@ client.on('message', async (message: Message) => {
 	if (!channel && !channel.isText())
 		return;
 
+	message.channel.startTyping();
+
 	await (channel as TextChannel).messages.fetch(messageID).then(
 		(msg: Message) => {
 			if (msg.embeds.length > 0)
@@ -62,6 +64,8 @@ client.on('message', async (message: Message) => {
 
 			message.channel.send(embed)
 				.then((embedMSG: Message) => {
+					message.channel.stopTyping();
+
 					embedMSG.react('❌');
 					embedMSG.createReactionCollector(
 						(reaction, user) => user.id !== client.user.id && user.id === message.author.id && reaction.emoji.name === '❌',
