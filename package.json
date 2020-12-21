@@ -1,6 +1,6 @@
 {
   "name": "bemder",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Bemder is a Discord bot that displays messages contained in Discord links.",
   "main": "./dist/index.js",
   "engines": {
