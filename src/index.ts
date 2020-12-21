@@ -44,12 +44,13 @@ client.on('message', async (message: Message) => {
 				return;
 
 			const member: GuildMember = msg.guild.members.cache.get(msg.author.id);
+			const channelName: string = msg.guild.channels.cache.get(msg.channel.id).name;
 			const embed: MessageEmbed = new MessageEmbed()
 				.setAuthor(`${msg.author.username}#${msg.author.discriminator}`, msg.author.avatarURL(), url)
 				.setTimestamp(new Date())
 				.setDescription(msg.content)
 				.setColor(member?.displayColor || null)
-				.setFooter(`Quoted by ${message.author.username}#${message.author.discriminator} | From #${msg.channel}`);
+				.setFooter(`Quoted by ${message.author.username}#${message.author.discriminator} | From #${channelName}`);
 
 			if (msg.attachments && msg.attachments.size <= 25) {
 				let nbrattachement = 1;
