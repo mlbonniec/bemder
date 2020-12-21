@@ -23,21 +23,22 @@ client.on('message', async (message: Message) => {
 	if (message.author.bot)
 		return;
 
-	const regex: RegExp = /ht{2}ps:\/{2}discord\.com\/chan{2}els(?:\/\d{18}){3}/;
+	const regex = /https:\/\/discord\.com\/channels\/(?<guildID>\d{18})\/(?<channelID>\d{18})\/(?<messageID>\d{18})/;
 	if (!message.content.match(regex))
 		return;
 
-	const url: string = regex.exec(message.content)[0];
-	const split: string[] = url.split('/');
+	const match: RegExpMatchArray = message.content.match(regex);
+	const url: string = match[0];
+	const { guildID, channelID, messageID }: RegExpMatchArray['groups'] = match.groups;
 
-	if (message.guild.id !== split[4])
+	if (message.guild.id !== guildID)
 		return;
 
-	const channel: GuildChannel = message.guild.channels.cache.get(split[5]);
+	const channel: GuildChannel = message.guild.channels.cache.get(channelID);
 	if (!channel && !channel.isText())
 		return;
 
-	await (channel as TextChannel).messages.fetch(split[6]).then(
+	await (channel as TextChannel).messages.fetch(messageID).then(
 		(msg: Message) => {
 			if (msg.embeds.length > 0)
 				return;
