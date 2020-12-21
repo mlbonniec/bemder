@@ -14,9 +14,7 @@ client.on('ready', () => {
 	client.user.setPresence({
 		status: 'online',
 		activity: {
-			type: 'CUSTOM_STATUS',
-			name: 'Waiting for your messages',
-			url: 'https://mathislebonniec.fr',
+			name: 'waiting for messages...',
 		},
 	});
 });
